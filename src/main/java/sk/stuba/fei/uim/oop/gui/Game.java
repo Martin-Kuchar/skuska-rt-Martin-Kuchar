@@ -21,9 +21,7 @@ public class Game {
 
         Logic logic = new Logic();
 
-
         logic.getRender().addMouseMotionListener(logic);
-
 
         JPanel menu = new JPanel(new BorderLayout());
 
@@ -64,7 +62,6 @@ public class Game {
         labels.add(r);
         labels.add(s);
 
-        
         len.setName("Length");
         rad.setName("Radius");
         spac.setName("Spacing");
@@ -74,7 +71,6 @@ public class Game {
         box.setFocusable(false);
 
         box.addActionListener(logic);
-
 
         menu.add(labels, BorderLayout.NORTH);
         menu.add(len, BorderLayout.WEST);
@@ -89,7 +85,6 @@ public class Game {
         frame.add(menu, BorderLayout.WEST);
         frame.add(logic.getRender());
         
-
         frame.setVisible(true);
     }
 

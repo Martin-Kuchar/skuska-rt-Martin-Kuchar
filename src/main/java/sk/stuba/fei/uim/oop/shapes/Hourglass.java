@@ -7,9 +7,7 @@ public class Hourglass extends Shape {
     
     public Hourglass(int radius, int x, int y, Color c) {
         super(radius, x, y, c);
-        
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {

@@ -62,7 +62,6 @@ public class Logic extends UniversalAdapter {
     @Override
     public void actionPerformed(ActionEvent e) {
         JComboBox j = ((JComboBox)e.getSource());
-        System.out.println(j.getSelectedItem().toString());
 
         if (j.getSelectedItem().toString().equals("Circle")){
             this.shape = 0;
@@ -122,6 +121,5 @@ public class Logic extends UniversalAdapter {
             }
         }
     }
-
 
 }

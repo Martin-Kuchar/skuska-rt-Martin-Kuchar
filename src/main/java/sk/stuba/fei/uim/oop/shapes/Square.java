@@ -7,9 +7,7 @@ public class Square extends Shape{
 
     public Square(int radius, int x, int y, Color c) {
         super(radius, x, y, c);
-        
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -19,5 +17,4 @@ public class Square extends Shape{
 
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
-    
 }
