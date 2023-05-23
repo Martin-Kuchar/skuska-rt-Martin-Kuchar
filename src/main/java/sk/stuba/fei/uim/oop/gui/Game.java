@@ -22,6 +22,7 @@ public class Game {
         Logic logic = new Logic();
 
         logic.getRender().addMouseListener(logic);
+        logic.getRender().addMouseMotionListener(logic);
 
 
         JPanel menu = new JPanel(new BorderLayout());
@@ -64,13 +65,15 @@ public class Game {
         labels.add(s);
 
         
-        len.setName("Lenght");
+        len.setName("Length");
         rad.setName("Radius");
         spac.setName("Spacing");
 
-        String items[] = {"Square","Circle","Hourglass"};
+        String items[] = {"Circle","Square","Hourglass"};
         JComboBox box = new JComboBox(items);
         box.setFocusable(false);
+
+        box.addActionListener(logic);
 
 
         menu.add(labels, BorderLayout.NORTH);

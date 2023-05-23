@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class Circle extends Shape {
 
-    public Circle(int radius) {
-        super(radius);
+    public Circle(int radius, int x, int y) {
+        super(radius, x, y);
         
     }
 

@@ -1,15 +1,19 @@
 package sk.stuba.fei.uim.oop.logic;
 
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 
 import lombok.Getter;
 import sk.stuba.fei.uim.oop.gui.Render;
 import sk.stuba.fei.uim.oop.shapes.Circle;
+import sk.stuba.fei.uim.oop.shapes.Hourglass;
+import sk.stuba.fei.uim.oop.shapes.Square;
 
 public class Logic extends UniversalAdapter {
     @Getter
@@ -18,13 +22,18 @@ public class Logic extends UniversalAdapter {
     private int lenght;
     private int radius;
     private int spacing;
+
+    private int shape;
     
 
     private ArrayList<Point> coords = new ArrayList<Point>();
 
     public Logic() {
         this.render = new Render();
-        render.add(new Circle(this.radius));
+        this.lenght = 50;
+        this.radius = 10;
+        this.spacing = 5;
+        this.shape = 0;
     }
 
 
@@ -37,19 +46,86 @@ public class Logic extends UniversalAdapter {
         }
         
         if (j.getName().equals("Radius")) {
-            this.radius = j.getValue();
-            
-
+            this.radius = j.getValue()*2;
         }
         
         if (j.getName().equals("Spacing")) {
             this.spacing = j.getValue();
         }
+        this.draw();
+    }
+
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.coords.add(e.getPoint());
+        this.draw();
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        
+    public void actionPerformed(ActionEvent e) {
+        JComboBox j = ((JComboBox)e.getSource());
+        System.out.println(j.getSelectedItem().toString());
+
+        if (j.getSelectedItem().toString().equals("Circle")){
+            this.shape = 0;
+        }
+
+        if (j.getSelectedItem().toString().equals("Square")){
+            this.shape = 1;
+        }
+
+        if (j.getSelectedItem().toString().equals("Hourglass")){
+            this.shape = 2;
+        }
+        this.draw();
+
     }
+
+    private void draw() {
+        this.removeExcessCoords();
+        this.render.updateCoords(this.coords);
+        this.addShapes();
+        this.render.revalidate();
+    
+        this.render.repaint();
+    }
+
+    private void removeExcessCoords() {
+        if (this.coords.size() > this.lenght) {
+            for (int i = 0; i < this.coords.size() - this.lenght; i++) {
+                this.coords.remove(0);
+            }
+        }
+    }
+
+    private void addShapes() {
+        this.render.removeAll();
+        this.render.repaint();
+        for (int i = 0; i < this.coords.size(); i++) {
+            if(i % this.spacing == 0) {
+                switch (this.shape) {
+                    case 0:
+                        this.render.add(new Circle(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.repaint();
+                        break;
+
+                    case 1:
+                        this.render.add(new Square(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.repaint();
+                        break;
+
+                    case 2:
+                        this.render.add(new Hourglass(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.repaint();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
 
 }
