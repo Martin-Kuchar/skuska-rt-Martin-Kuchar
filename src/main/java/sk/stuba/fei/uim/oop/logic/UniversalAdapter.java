@@ -5,36 +5,11 @@ import java.awt.event.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class UniversalAdapter implements MouseMotionListener, MouseListener, ActionListener, ChangeListener {
+public class UniversalAdapter implements MouseMotionListener, ActionListener, ChangeListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
         
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-   
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
- 
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 
     @Override

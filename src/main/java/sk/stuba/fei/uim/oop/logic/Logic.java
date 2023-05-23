@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.logic;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -79,7 +80,6 @@ public class Logic extends UniversalAdapter {
             this.shape = 2;
         }
         this.draw();
-
     }
 
     private void draw() {
@@ -103,20 +103,21 @@ public class Logic extends UniversalAdapter {
         this.render.removeAll();
         this.render.repaint();
         for (int i = 0; i < this.coords.size(); i++) {
+            Color c = Color.getHSBColor(((float)i/100) , 1, 1);
             if(i % this.spacing == 0) {
                 switch (this.shape) {
                     case 0:
-                        this.render.add(new Circle(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.add(new Circle(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY()), c));
                         this.render.repaint();
                         break;
 
                     case 1:
-                        this.render.add(new Square(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.add(new Square(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY()), c));
                         this.render.repaint();
                         break;
 
                     case 2:
-                        this.render.add(new Hourglass(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY())));
+                        this.render.add(new Hourglass(this.radius, ((int)this.coords.get(i).getX()), ((int)this.coords.get(i).getY()), c));
                         this.render.repaint();
                         break;
 

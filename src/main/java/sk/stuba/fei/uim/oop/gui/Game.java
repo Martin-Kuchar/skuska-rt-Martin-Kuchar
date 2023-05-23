@@ -21,7 +21,7 @@ public class Game {
 
         Logic logic = new Logic();
 
-        logic.getRender().addMouseListener(logic);
+
         logic.getRender().addMouseMotionListener(logic);
 
 

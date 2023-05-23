@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class Hourglass extends Shape {
     
-    public Hourglass(int radius, int x, int y) {
-        super(radius, x, y);
+    public Hourglass(int radius, int x, int y, Color c) {
+        super(radius, x, y, c);
         
     }
 
@@ -15,7 +15,7 @@ public class Hourglass extends Shape {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.setColor(Color.red);
+        g.setColor(this.c);
 
         int xPoints[] = {0, this.getWidth(), this.getWidth()/2};
         int yPoints[] = {0, 0, this.getHeight()/2};
