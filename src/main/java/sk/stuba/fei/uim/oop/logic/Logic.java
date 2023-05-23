@@ -23,10 +23,8 @@ public class Logic extends UniversalAdapter {
     private int lenght;
     private int radius;
     private int spacing;
-
     private int shape;
     
-
     private ArrayList<Point> coords = new ArrayList<Point>();
 
     public Logic() {
@@ -36,7 +34,6 @@ public class Logic extends UniversalAdapter {
         this.spacing = 5;
         this.shape = 0;
     }
-
 
     @Override
     public void stateChanged(ChangeEvent e) {
@@ -55,7 +52,6 @@ public class Logic extends UniversalAdapter {
         }
         this.draw();
     }
-
 
     @Override
     public void mouseMoved(MouseEvent e) {
@@ -87,7 +83,6 @@ public class Logic extends UniversalAdapter {
         this.render.updateCoords(this.coords);
         this.addShapes();
         this.render.revalidate();
-    
         this.render.repaint();
     }
 
@@ -103,7 +98,7 @@ public class Logic extends UniversalAdapter {
         this.render.removeAll();
         this.render.repaint();
         for (int i = 0; i < this.coords.size(); i++) {
-            Color c = Color.getHSBColor(((float)i/100) , 1, 1);
+            Color c = new Color(0, 255, 0, i*(205/this.coords.size())+50);
             if(i % this.spacing == 0) {
                 switch (this.shape) {
                     case 0:
